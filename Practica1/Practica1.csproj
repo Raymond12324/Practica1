@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Dtos\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Candidate\" />
     <Folder Include="Views\RRHH\" />
