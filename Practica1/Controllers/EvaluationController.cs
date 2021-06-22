@@ -9,23 +9,21 @@ using System.Threading.Tasks;
 
 namespace Practica1.Controllers
 {
-    public class CandidateController : Controller
+
+    public class EvaluationController : Controller
     {
         private readonly DataContext _context;
 
-        public List<Candidate> Candidate { get; set; }
+        public List<Evaluation> Candidate { get; set; }
 
-        public CandidateController(DataContext context) {
+        public EvaluationController(DataContext context)
+        {
             _context = context;
         }
-
-
         public async Task<IActionResult> Index()
         {
-            var Test = _context.candidate.Include(c => c.Evaluations);
+            var Test = _context.evaluation.Include(c => c.Candidate);
             return View(await Test.ToListAsync());
         }
-
-   
     }
 }
