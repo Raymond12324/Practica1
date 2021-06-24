@@ -1,0 +1,61 @@
+﻿@model Practica1.Models.Evaluation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Evaluation</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RRHH_evaluator)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RRHH_evaluator)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.evaluation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.evaluation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Commentary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Commentary)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateEvaluation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateEvaluation)
+        </dd>
+        <dt>
+            Candidato
+        </dt>
+        <dd>
+          
+
+                <h5>
+                    Name:
+                    @Html.DisplayFor(modelItem => Model.Candidate.Name)
+                </h5>
+
+
+                <h5>
+                    Identificacion: 
+                    @Html.DisplayFor(modelItem => Model.Candidate.Identification)
+                </h5>
+
+      
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EvaluationID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

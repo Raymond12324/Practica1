@@ -6,10 +6,8 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+<table class="table border">
     <thead>
         <tr>
             <th>
@@ -24,7 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.DateEvaluation)
             </th>
-            <th></th>
+            <th>
+                CandidateInfo
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -33,8 +33,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RRHH_evaluator)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.evaluation)
+            <td class=font-weight-bold>
+                @if (item.evaluation <= 6)
+                {
+                    <span class="font-weight-bold text-danger h5">@item.evaluation/10</span>
+                }
+                else { 
+                    <span class="font-weight-bold text-success h5">@item.evaluation/10</span>
+                }
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Commentary)
@@ -42,14 +49,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DateEvaluation)
             </td>
-            <td>
-             
-                @Html.DisplayFor(modelItem => item.Candidate)
+            <td class="border">
+                @Html.DisplayFor(modelItem => item.Candidate.Name) <br />
+                @Html.DisplayFor(modelItem => item.Candidate.Identification)
             </td>
+ 
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EvaluationID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EvaluationID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EvaluationID">Delete</a>
+
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.EvaluationID">Edit</a> |
+                <a class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.EvaluationID">Details</a> |
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.EvaluationID">Delete</a>
             </td>
         </tr>
 }

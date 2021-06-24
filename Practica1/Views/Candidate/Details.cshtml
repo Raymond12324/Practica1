@@ -1,0 +1,99 @@
+﻿@model Practica1.Models.Candidate
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="shadow-lg p-5">
+    <h4>Candidate</h4>
+    <hr />
+    <dl class="row  ">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Identification)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Identification)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.dateCandidate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.dateCandidate)
+        </dd>
+
+
+        <dd class="col-sm-10 border m-3 p-5">
+
+            <h5>Evaluations</h5>
+            <table class="table ">
+                <tr>
+                    <th>
+                        Evaluator
+                    </th>
+                    <th>
+                        Commentary
+                    </th>
+                    <th>
+                        Evaluation
+                    </th>
+                </tr>
+                @foreach (var item in Model.Evaluations)
+                {
+
+
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RRHH_evaluator)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Commentary)
+                        </td>
+                        <td>
+                            @if (item.evaluation <= 6)
+                            {
+                                <span class="font-weight-bold text-danger h5">@item.evaluation/10</span>
+                            }
+                            else
+                            {
+                                <span class="font-weight-bold text-success h5">@item.evaluation/10</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+    <div class="mt-2">
+        <a asp-action="Edit" asp-route-id="@Model.CandidateID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+

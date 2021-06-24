@@ -7,9 +7,9 @@
 <h1>index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table border" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -31,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.dateCandidate)
             </th>
             <th>
-                Evaluation
+                Number of evaluations
             </th>
             <th></th>
         </tr>
@@ -57,13 +57,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.dateCandidate)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Evaluations.Count)
+            <td class="text-center">
+                @if (item.Evaluations.Count <= 0)
+                {
+                    <span class="text-danger font-weight-bold h5">@item.Evaluations.Count</span>
+                }
+                else { 
+                    <span class="text-success font-weight-bold h5">@item.Evaluations.Count</span>               
+                }     
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CandidateID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CandidateID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CandidateID">Delete</a>
+                <a class="btn btn-success btn-sm" style="display:block" asp-controller="Evaluation" asp-action="Create" asp-route-id="@item.CandidateID">Add Evaluation</a> <br />
+                <a class="" asp-action="Edit" asp-route-id="@item.CandidateID">Edit</a>
+                <a class="" asp-action="Details" asp-route-id="@item.CandidateID">Details</a>
+                <a class="" asp-action="Delete" asp-route-id="@item.CandidateID">Delete</a>
             </td>
         </tr>
 }
